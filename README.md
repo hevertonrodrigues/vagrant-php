@@ -1,6 +1,6 @@
 # Vagrant-php
 
-Ambiente de desenvolvimento com Nginx, PHP e MariaDB.
+Ambiente de desenvolvimento com Nginx, PHP e MySQL. Baseado no [vagrant-puppet](https://github.com/jamesmcfadden/vagrant-puppet)
 
 ## Requerimentos
 
