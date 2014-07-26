@@ -61,13 +61,13 @@ server {
 Acesse o diretório e levente o vagrant
 
 ``` 
+$ cd vagrant-php
 $ vagrant up
 ```
 
 Após levantar a máquina, é necessário reiniciar o nginx para conseguir ler as configurações de cada site
 
 ``` 
-$ cd vagrant-php
 $ vagrant ssh -c "sudo service nginx restart"
 ```
 
