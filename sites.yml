@@ -1,0 +1,9 @@
+---
+:site:
+  :folder: /Users/username/Sites/site
+  :port: 8881
+  :virtualfolder: site
+:site2:
+  :folder: /Users/username/Sites/site2
+  :port: 8882
+  :virtualfolder: site2
