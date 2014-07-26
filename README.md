@@ -82,6 +82,11 @@ E no dispositivo móvel
 http://{ip-da-sua-maquina}:8881
 ``` 
 
+## Todo
+
+* Trocar o MySQL para MariaDB
+* Pré-instalar extensões do PHP (gd, imagemagick, etc)
+
 ## Como contribuir
 
 Contribuições são sempre bem-vindas! Basta fazer um fork desse repositório e enviar um pull request com uma boa descrição.
