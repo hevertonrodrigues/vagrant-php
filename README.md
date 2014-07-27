@@ -85,7 +85,7 @@ http://{ip-da-sua-maquina}:8881
 ## Todo
 
 * Trocar o MySQL para MariaDB
-* Pré-instalar extensões do PHP (gd, imagemagick, etc)
+* Pré-instalar extensões do PHP (sudo apt-get install php5-fpm php-apc php5-mcrypt php5-memcached php5-gd php5-curl php5-imagick php5-json php-xml-parser php5-mysqlnd)
 
 ## Como contribuir
 
