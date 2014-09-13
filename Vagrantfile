@@ -1,3 +1,5 @@
+require 'yaml'
+
 Vagrant.configure("2") do |config|
   
   # Box
