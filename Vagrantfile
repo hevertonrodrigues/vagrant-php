@@ -34,6 +34,10 @@ Vagrant.configure("2") do |config|
   # MySQL
   config.vm.network "forwarded_port", guest: 3306, host: 3303
 
+  # Mailcatcher
+  config.vm.network "forwarded_port", guest: 1080, host: 1080
+  config.vm.network "forwarded_port", guest: 1025, host: 1025
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", ip: "33.33.33.60"
@@ -44,4 +48,13 @@ Vagrant.configure("2") do |config|
     puppet.module_path = 'puppet/modules'
     puppet.manifest_file = 'init.pp'
   end
+
+  # Otimization
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
+  end
 end
+
+## TODO
+# * Pre-instalar: RVM, Ruby On Rails, Phalcon PHP
