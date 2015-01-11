@@ -1,0 +1,23 @@
+#!/bin/bash
+ 
+control_c() {
+  echo -en "\n*** Saindo! ***\n"
+  exit $?
+}
+
+trap control_c SIGINT
+ 
+echo "--------------------------------------------------"
+echo "Iniciando vagrant em 7 segundos"
+echo "- Pressione Control+C para interromper processo"
+echo "--------------------------------------------------"
+
+sleep 7
+
+echo "                Voe vagrant =D"
+echo ""
+
+cd /Users/thiago/Documents/Thiago/Vagrant/vagrant-php/
+vagrant up
+vagrant ssh -c "sudo service nginx restart"
+vagrant ssh
