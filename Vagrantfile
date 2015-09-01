@@ -3,8 +3,7 @@ require 'yaml'
 Vagrant.configure("2") do |config|
   
   # Box
-  config.vm.box = "ubuntu-14.04"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box = "ubuntu-package"
 
   # Sites disponiveis
   sites = YAML.load(File.open("sites.yml"))
@@ -12,16 +11,16 @@ Vagrant.configure("2") do |config|
   # Pattern 
   patterns = []
 
+  # Configura diretorio
+  config.vm.synced_folder "/Users/thiago/Sites/", "/var/www/", 
+    owner: "vagrant", 
+    group: "www-data", 
+    mount_options: ["dmode=777,fmode=777"]
+
   sites.each do |key,value| 
     
     # Configura porta para site
     config.vm.network "forwarded_port", guest: value[:port], host: value[:port]
-
-    # Configura diretorio
-    config.vm.synced_folder value[:folder], "/var/www/#{value[:virtualfolder]}", 
-      owner: "vagrant", 
-      group: "www-data", 
-      mount_options: ["dmode=777,fmode=664"]
 
     # Expressoes para dns
     pattern = "^.*#{key.to_s}.dev$"
@@ -40,6 +39,9 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 1080, host: 1080
   config.vm.network "forwarded_port", guest: 1025, host: 1025
 
+  # Jekyll
+  config.vm.network "forwarded_port", guest: 4000, host: 4000
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", ip: "33.33.33.60"
@@ -55,6 +57,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
     v.cpus = 2
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 end
 
